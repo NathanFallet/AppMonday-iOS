@@ -14,12 +14,14 @@ class App {
     var description: String
     var user: String
     var link: String
+    var date: String
     
-    init(name: String, description: String, user: String, link: String) {
+    init(name: String, description: String, user: String, link: String, date: String) {
         self.name = name
         self.description = description
         self.user = user.hasPrefix("@") ? String(user.dropFirst()) : user
         self.link = link
+        self.date = Utils.parseDate(input: date)
     }
     
 }

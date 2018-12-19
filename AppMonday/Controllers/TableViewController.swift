@@ -47,7 +47,7 @@ class TableViewController: UITableViewController {
                         var count = 0
                         for (_, obj) in parseJSON.sorted(by: {($0.0 as! NSString).integerValue < ($1.0 as! NSString).integerValue}) {
                             if let app = obj as? NSDictionary {
-                                self.apps += [App(name: app["name"] as! String, description: app["description"] as! String, user: app["user"] as! String, link: app["link"] as! String)]
+                                self.apps += [App(name: app["name"] as! String, description: app["description"] as! String, user: app["user"] as! String, link: app["link"] as! String, date: app["publish"] as! String)]
                                 count += 1
                             }
                         }
@@ -86,6 +86,8 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "appCell", for: indexPath) as! AppTableViewCell
         
         cell.appname.text = app.name
+        cell.appuser.text = "Submitted by \(app.user)"
+        cell.appdate.text = app.date
         
         return cell
     }

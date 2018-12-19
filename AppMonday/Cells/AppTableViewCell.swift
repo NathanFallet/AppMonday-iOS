@@ -11,6 +11,8 @@ import UIKit
 class AppTableViewCell: UITableViewCell {
 
     @IBOutlet weak var appname: UILabel!
+    @IBOutlet weak var appuser: UILabel!
+    @IBOutlet weak var appdate: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

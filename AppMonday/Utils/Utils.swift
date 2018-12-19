@@ -79,4 +79,17 @@ class Utils {
         }
     }
     
+    static func parseDate(input: String) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let date = formatter.date(from: input) {
+            let formatter2 = DateFormatter()
+            formatter2.dateStyle = .medium
+            formatter2.timeStyle = .none
+            return formatter2.string(from: date)
+        }
+        return input
+    }
+    
 }

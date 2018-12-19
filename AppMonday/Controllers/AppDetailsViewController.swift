@@ -11,13 +11,14 @@ import UIKit
 class AppDetailsViewController: UIViewController {
 
     var app: App?
+    @IBOutlet weak var appName: UILabel!
     @IBOutlet weak var appDescription: UILabel!
     @IBOutlet weak var appUser: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = app?.name
+        appName.text = app?.name
         appDescription.text = app?.description
         appUser.setTitle(app?.user, for: .normal)
     }
