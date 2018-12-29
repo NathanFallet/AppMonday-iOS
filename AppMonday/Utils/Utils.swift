@@ -18,7 +18,7 @@ class Utils {
     static func query(post: [String: Any], completionHandler: @escaping (Data) -> Void) {
         handlers += [{
             print(post)
-            let url = URL(string: "https://apps.nathanfallet.me/appmonday/index.php")
+            let url = URL(string: "https://api.appmonday.xyz/index.php")
             var request = URLRequest(url:url!)
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "content-type")
