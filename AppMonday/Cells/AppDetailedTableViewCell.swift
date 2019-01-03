@@ -1,28 +1,31 @@
 //
-//  AppDetailsViewController.swift
+//  AppDetailedTableViewCell.swift
 //  AppMonday
 //
-//  Created by Nathan FALLET on 18/12/2018.
-//  Copyright © 2018 Nathan FALLET. All rights reserved.
+//  Created by Nathan FALLET on 03/01/2019.
+//  Copyright © 2019 Nathan FALLET. All rights reserved.
 //
 
 import UIKit
 
-class AppDetailsViewController: UIViewController {
+class AppDetailedTableViewCell: UITableViewCell {
 
     var app: App?
-    @IBOutlet weak var appName: UILabel!
-    @IBOutlet weak var appDescription: UILabel!
-    @IBOutlet weak var appUser: UIButton!
+    @IBOutlet weak var appname: UILabel!
+    @IBOutlet weak var appuser: UIButton!
+    @IBOutlet weak var appdate: UILabel!
+    @IBOutlet weak var appdescription: UILabel!
     @IBOutlet weak var logo: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        appName.text = app?.name
-        appDescription.text = app?.description
-        appUser.setTitle(app?.user, for: .normal)
-        loadImage(fromURL: (app?.logo)!)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
     @IBAction func openLink(_ sender: Any) {
@@ -52,15 +55,5 @@ class AppDetailsViewController: UIViewController {
             self.logo.image = image
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -47,7 +47,7 @@ class TableViewController: UITableViewController {
                         var count = 0
                         for (_, obj) in parseJSON.sorted(by: {($0.0 as! NSString).integerValue < ($1.0 as! NSString).integerValue}) {
                             if let app = obj as? NSDictionary {
-                                self.apps += [App(name: app["name"] as! String, description: app["description"] as! String, user: app["user"] as! String, link: app["link"] as! String, date: app["publish"] as! String)]
+                                self.apps += [App(name: app["name"] as! String, description: app["description"] as! String, user: app["user"] as! String, link: app["link"] as! String, date: app["publish"] as! String, logo: app["logo"] as! String)]
                                 count += 1
                             }
                         }
@@ -83,13 +83,27 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let app = apps[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "appCell", for: indexPath) as! AppTableViewCell
-        
-        cell.appname.text = app.name
-        cell.appuser.text = "Submitted by \(app.user)"
-        cell.appdate.text = app.date
-        
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "appDetailedCell", for: indexPath) as! AppDetailedTableViewCell
+            
+            cell.app = app
+            cell.appname.text = app.name
+            cell.appuser.setTitle(app.user, for: .normal)
+            cell.appdate.text = app.date
+            cell.appdescription.text = app.description
+            cell.loadImage(fromURL: app.logo)
+            
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "appCell", for: indexPath) as! AppTableViewCell
+            
+            cell.appname.text = app.name
+            cell.appuser.text = "Submitted by \(app.user)"
+            cell.appdate.text = app.date
+            cell.loadImage(fromURL: app.logo)
+            
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -13,6 +13,7 @@ class AppTableViewCell: UITableViewCell {
     @IBOutlet weak var appname: UILabel!
     @IBOutlet weak var appuser: UILabel!
     @IBOutlet weak var appdate: UILabel!
+    @IBOutlet weak var logo: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,15 @@ class AppTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func loadImage(fromURL imageUrl: String) {
+        logo.clipsToBounds = true
+        logo.layer.cornerRadius = 13
+        
+        Utils.loadImage(url: imageUrl) { (_ image: UIImage) in
+            self.logo.image = image
+        }
     }
 
 }

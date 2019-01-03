@@ -14,6 +14,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var appDescription: UITextField!
     @IBOutlet weak var appUser: UITextField!
     @IBOutlet weak var appLink: UITextField!
+    @IBOutlet weak var appLogo: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class AddViewController: UIViewController {
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
         
-        Utils.query(post: ["method": "Web:submitApp()", "name": appName.text!, "description": appDescription.text!, "user": appUser.text!, "link": appLink.text!]) { (data: Data) in
+        Utils.query(post: ["method": "Web:submitApp()", "name": appName.text!, "description": appDescription.text!, "user": appUser.text!, "link": appLink.text!, "logo": appLogo.text!]) { (data: Data) in
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
                 

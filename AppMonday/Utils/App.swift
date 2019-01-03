@@ -15,13 +15,15 @@ class App {
     var user: String
     var link: String
     var date: String
+    var logo: String
     
-    init(name: String, description: String, user: String, link: String, date: String) {
+    init(name: String, description: String, user: String, link: String, date: String, logo: String) {
         self.name = name
         self.description = description
         self.user = user.hasPrefix("@") ? String(user.dropFirst()) : user
         self.link = link
         self.date = Utils.parseDate(input: date)
+        self.logo = logo.isEmpty ? "NoLogo" : logo
     }
     
 }

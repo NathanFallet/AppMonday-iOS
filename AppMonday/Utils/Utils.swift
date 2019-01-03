@@ -92,4 +92,28 @@ class Utils {
         return input
     }
     
+    static func loadImage(url: String, _ callback: @escaping (_ image: UIImage) -> Void) {
+        let imageUrl = URL(string: url)!
+        
+        if let imageFromCache = cache.object(forKey: imageUrl.absoluteString as NSString) as? UIImage {
+            callback(imageFromCache)
+        }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let imageData:NSData = NSData(contentsOf: imageUrl) else {
+                DispatchQueue.main.async {
+                    let image = UIImage(named: "NoLogo")!
+                    cache.setObject(image, forKey: imageUrl.absoluteString as NSString)
+                    callback(image)
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data: imageData as Data)!
+                cache.setObject(image, forKey: imageUrl.absoluteString as NSString)
+                callback(image)
+            }
+        }
+    }
+    
 }
