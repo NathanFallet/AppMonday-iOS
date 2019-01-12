@@ -25,11 +25,14 @@ class AppDetailsViewController: UIViewController {
     }
     
     func loadUI() {
-        view.isHidden = false
-        appName.text = app?.name
-        appDescription.text = app?.description
-        appUser.setTitle(app?.user, for: .normal)
-        loadImage(fromURL: (app?.logo)!)
+        UIView.performWithoutAnimation {
+            view.isHidden = false
+            appName.text = app?.name
+            appDescription.text = app?.description
+            appUser.setTitle(app?.user, for: .normal)
+            appUser.layoutIfNeeded()
+            loadImage(fromURL: (app?.logo)!)
+        }
     }
     
     @IBAction func openLink(_ sender: Any) {
