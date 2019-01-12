@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -23,8 +24,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rightNavController = splitViewController.viewControllers.last as! UINavigationController
         let detailViewController = rightNavController.topViewController as! AppDetailsViewController
         
-        //splitViewController.preferredDisplayMode = UISplitViewController.DisplayMode.
         masterViewController.delegate = detailViewController
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Notifications permission granted.")
+                UNUserNotificationCenter.current().delegate = self
+                
+                UNUserNotificationCenter.current().getPendingNotificationRequests() { (requests) in
+                    if requests.count == 0 {
+                    
+                        let content = UNMutableNotificationContent()
+                        content.title = "We are Monday"
+                        content.body = "Don't forget to check today AppMonday!"
+                        content.sound = UNNotificationSound.default
+                        
+                        var dateInfo = DateComponents()
+                        dateInfo.hour = 12
+                        dateInfo.minute = 0
+                        dateInfo.weekday = 2
+                        dateInfo.timeZone = TimeZone(identifier: "France/Paris")
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+                        
+                        let request = UNNotificationRequest(identifier: "AppMondayWeekly", content: content, trigger: trigger)
+                        UNUserNotificationCenter.current().add(request) { (error : Error?) in
+                            if let theError = error {
+                                print(theError.localizedDescription)
+                            }
+                        }
+                    }
+                }
+            } else {
+                print("Notifications permission denied because: \(String(describing: error?.localizedDescription)).")
+            }
+            
+        }
         
         return true
     }

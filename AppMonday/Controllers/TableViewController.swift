@@ -19,16 +19,16 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(reloadServers(_:)), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(reloadApps(_:)), for: .valueChanged)
         
-        loadServers()
+        loadApps()
     }
     
-    @objc func reloadServers(_ sender: Any){
-        loadServers()
+    @objc func reloadApps(_ sender: Any){
+        loadApps()
     }
     
-    func loadServers() {
+    func loadApps() {
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = false
@@ -120,7 +120,7 @@ class TableViewController: UITableViewController {
         let lastElement = apps.count - 1
         if !loadingMore && hasMore && indexPath.row == lastElement {
             loadingMore = true
-            loadServers()
+            loadApps()
         }
     }
     
