@@ -13,6 +13,7 @@ class TableViewController: UITableViewController {
     var apps = [App]()
     var loadingMore = false
     var hasMore = true
+    weak var delegate: AppSelectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +108,12 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showAppDetails", sender: apps[indexPath.row])
+        let selectedApp = apps[indexPath.row]
+        delegate?.appSelected(selectedApp)
+        
+        if let detailViewController = delegate as? AppDetailsViewController, let detailNavigationController = detailViewController.navigationController {
+            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -163,4 +169,8 @@ class TableViewController: UITableViewController {
         vc.app = app
     }
 
+}
+
+protocol AppSelectionDelegate: class {
+    func appSelected(_ newApp: App)
 }

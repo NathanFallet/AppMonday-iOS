@@ -10,7 +10,11 @@ import UIKit
 
 class AppDetailsViewController: UIViewController {
 
-    var app: App?
+    var app: App? {
+        didSet {
+            loadUI()
+        }
+    }
     @IBOutlet weak var appName: UILabel!
     @IBOutlet weak var appDescription: UILabel!
     @IBOutlet weak var appUser: UIButton!
@@ -18,7 +22,10 @@ class AppDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    func loadUI() {
+        view.isHidden = false
         appName.text = app?.name
         appDescription.text = app?.description
         appUser.setTitle(app?.user, for: .normal)
@@ -63,4 +70,10 @@ class AppDetailsViewController: UIViewController {
     }
     */
 
+}
+
+extension AppDetailsViewController: AppSelectionDelegate {
+    func appSelected(_ newApp: App) {
+        app = newApp
+    }
 }

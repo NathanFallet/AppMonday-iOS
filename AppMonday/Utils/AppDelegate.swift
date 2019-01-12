@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let tabBarController = window?.rootViewController as! UITabBarController
+        let splitViewController = tabBarController.viewControllers?.first as! UISplitViewController
+        let leftNavController = splitViewController.viewControllers.first as! UINavigationController
+        let masterViewController = leftNavController.topViewController as! TableViewController
+        let rightNavController = splitViewController.viewControllers.last as! UINavigationController
+        let detailViewController = rightNavController.topViewController as! AppDetailsViewController
+        
+        //splitViewController.preferredDisplayMode = UISplitViewController.DisplayMode.
+        masterViewController.delegate = detailViewController
+        
         return true
     }
 
