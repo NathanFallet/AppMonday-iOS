@@ -308,11 +308,11 @@
             </objects>
             <point key="canvasLocation" x="1977" y="1567"/>
         </scene>
-        <!--Projects list-->
+        <!--Last projects-->
         <scene sceneID="wiA-pe-4Qm">
             <objects>
                 <splitViewController id="gE0-qv-lzW" customClass="SplitViewController" customModule="AppMonday" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Projects list" image="List" id="uKq-gR-1GV"/>
+                    <tabBarItem key="tabBarItem" title="Last projects" image="List" id="uKq-gR-1GV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="FVw-pu-af7" kind="relationship" relationship="masterViewController" id="bdh-KB-Gyz"/>
@@ -323,7 +323,7 @@
             </objects>
             <point key="canvasLocation" x="1097" y="27"/>
         </scene>
-        <!--Projects list-->
+        <!--Last projects-->
         <scene sceneID="oaW-jT-cCC">
             <objects>
                 <tableViewController id="6zD-Jh-nQc" customClass="TableViewController" customModule="AppMonday" customModuleProvider="target" sceneMemberID="viewController">
@@ -536,7 +536,7 @@
                             <outlet property="delegate" destination="6zD-Jh-nQc" id="oC9-MH-Mh9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Projects list" id="sLa-d4-tg2"/>
+                    <navigationItem key="navigationItem" title="Last projects" id="sLa-d4-tg2"/>
                     <connections>
                         <outlet property="label" destination="JYr-OM-ldr" id="FcC-xc-kGY"/>
                     </connections>
