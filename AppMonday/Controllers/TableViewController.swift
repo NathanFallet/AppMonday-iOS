@@ -24,7 +24,9 @@ class TableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(reloadApps(_:)), for: .valueChanged)
         
         loadApps()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             var dateInfo = DateComponents()
             dateInfo.hour = 12
