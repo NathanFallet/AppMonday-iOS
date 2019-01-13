@@ -13,7 +13,9 @@ class TableViewController: UITableViewController {
     var apps = [App]()
     var loadingMore = false
     var hasMore = true
+    var timer: Timer?
     weak var delegate: AppSelectionDelegate?
+    @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,24 @@ class TableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(reloadApps(_:)), for: .valueChanged)
         
         loadApps()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            var dateInfo = DateComponents()
+            dateInfo.hour = 12
+            dateInfo.minute = 0
+            dateInfo.weekday = 2
+            dateInfo.timeZone = TimeZone(identifier: "Europe/Paris")
+            let date = Calendar(identifier: .gregorian).nextDate(after: Date(), matching: dateInfo, matchingPolicy: .nextTime, direction: .forward)!
+            
+            let formatter = DateComponentsFormatter()
+            formatter.unitsStyle = .full
+            formatter.allowedUnits = [.day, .hour, .minute, .second]
+            self.label.text = "Time before next AppMonday:\n\(formatter.string(from: Date(), to: date)!)"
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        timer?.invalidate()
     }
     
     @objc func reloadApps(_ sender: Any){
