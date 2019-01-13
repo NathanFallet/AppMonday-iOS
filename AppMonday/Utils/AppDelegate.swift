@@ -35,16 +35,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     if requests.count == 0 {
                     
                         let content = UNMutableNotificationContent()
-                        content.title = "We are Monday"
-                        content.body = "Don't forget to check today AppMonday!"
+                        content.title = "We are Monday!"
+                        content.body = "Don't forget to check AppMonday"
                         content.sound = UNNotificationSound.default
                         
                         var dateInfo = DateComponents()
                         dateInfo.hour = 12
                         dateInfo.minute = 0
                         dateInfo.weekday = 2
-                        dateInfo.timeZone = TimeZone(identifier: "France/Paris")
-                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+                        dateInfo.timeZone = TimeZone(identifier: "Europe/Paris")
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
                         
                         let request = UNNotificationRequest(identifier: "AppMondayWeekly", content: content, trigger: trigger)
                         UNUserNotificationCenter.current().add(request) { (error : Error?) in
@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 print(theError.localizedDescription)
                             }
                         }
+                        
+                        print("Notification scheduled!")
                     }
                 }
             } else {
