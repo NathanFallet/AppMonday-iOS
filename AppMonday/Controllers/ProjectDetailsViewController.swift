@@ -18,24 +18,21 @@ class ProjectDetailsViewController: UIViewController {
     @IBOutlet weak var logo: UIImageView!
     var project: Project? {
         didSet {
-            loadUI()
+            UIView.performWithoutAnimation {
+                loadViewIfNeeded()
+                placeholder.isHidden = true
+                stackview.isHidden = false
+                name.text = project?.name
+                desc.text = project?.description
+                user.setTitle(project?.user, for: .normal)
+                user.layoutIfNeeded()
+                loadImage(fromURL: (project?.logo)!)
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    func loadUI() {
-        UIView.performWithoutAnimation {
-            placeholder.isHidden = true
-            stackview.isHidden = false
-            name.text = project?.name
-            desc.text = project?.description
-            user.setTitle(project?.user, for: .normal)
-            user.layoutIfNeeded()
-            loadImage(fromURL: (project?.logo)!)
-        }
     }
     
     @IBAction func openLink(_ sender: Any) {
@@ -65,16 +62,6 @@ class ProjectDetailsViewController: UIViewController {
             self.logo.image = image
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

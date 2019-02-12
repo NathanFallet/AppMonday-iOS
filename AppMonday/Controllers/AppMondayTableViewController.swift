@@ -14,19 +14,6 @@ class AppMondayTableViewController: UITableViewController {
     let spinner = UIActivityIndicatorView()
     let loadingLabel = UILabel()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        isDarkMode() ? enableDarkMode() : disableDarkMode()
-    }
-    
     func loadContent() {}
     
     @objc func reloadContent(_ sender: Any){
@@ -34,11 +21,6 @@ class AppMondayTableViewController: UITableViewController {
         if refreshControl != nil {
             refreshControl?.endRefreshing()
         }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
     func setLoadingScreen() {
@@ -67,47 +49,6 @@ class AppMondayTableViewController: UITableViewController {
         spinner.isHidden = true
         loadingLabel.isHidden = true
         tableView.separatorStyle = .singleLine
-    }
-    
-    func isDarkMode() -> Bool {
-        let datas = Foundation.UserDefaults.standard
-        
-        if(datas.value(forKey: "isDarkMode") != nil){
-            return datas.value(forKey: "isDarkMode") as! Bool
-        }
-        return false
-    }
-    
-    @objc func darkModeEnabled(_ notification: Notification) {
-        enableDarkMode()
-        self.tableView.reloadData()
-    }
-    
-    @objc func darkModeDisabled(_ notification: Notification) {
-        disableDarkMode()
-        self.tableView.reloadData()
-    }
-    
-    open func enableDarkMode() {
-        self.view.backgroundColor = CustomColor.darkTableBackground
-        self.tableView.backgroundColor = CustomColor.darkTableBackground
-        self.tableView.separatorColor = CustomColor.darkSeparator
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.view.backgroundColor = CustomColor.darkBackground
-        self.navigationController?.navigationBar.tintColor = CustomColor.darkActive
-        self.loadingLabel.textColor = CustomColor.darkText
-        self.spinner.style = .white
-    }
-    
-    open func disableDarkMode() {
-        self.view.backgroundColor = CustomColor.lightTableBackground
-        self.tableView.backgroundColor = CustomColor.lightTableBackground
-        self.tableView.separatorColor = CustomColor.lightSeparator
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.view.backgroundColor = CustomColor.lightBackground
-        self.navigationController?.navigationBar.tintColor = CustomColor.lightActive
-        self.loadingLabel.textColor = CustomColor.lightText
-        self.spinner.style = .gray
     }
 
 }
