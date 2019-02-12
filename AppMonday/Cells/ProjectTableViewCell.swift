@@ -8,11 +8,11 @@
 
 import UIKit
 
-class AppTableViewCell: UITableViewCell {
+class ProjectTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var appname: UILabel!
-    @IBOutlet weak var appuser: UILabel!
-    @IBOutlet weak var appdate: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var user: UILabel!
+    @IBOutlet weak var date: UILabel!
     @IBOutlet weak var logo: UIImageView!
     
     override func awakeFromNib() {

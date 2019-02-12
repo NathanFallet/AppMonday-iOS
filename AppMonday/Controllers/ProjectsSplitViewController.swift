@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SplitViewController: UISplitViewController, UISplitViewControllerDelegate {
+class ProjectsSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        preferredDisplayMode = .allVisible
         delegate = self
     }
     

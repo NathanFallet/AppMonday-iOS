@@ -8,17 +8,19 @@
 
 import UIKit
 
-class AppDetailsViewController: UIViewController {
+class ProjectDetailsViewController: UIViewController {
 
-    var app: App? {
+    @IBOutlet weak var stackview: UIStackView!
+    @IBOutlet weak var placeholder: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var user: UIButton!
+    @IBOutlet weak var logo: UIImageView!
+    var project: Project? {
         didSet {
             loadUI()
         }
     }
-    @IBOutlet weak var appName: UILabel!
-    @IBOutlet weak var appDescription: UILabel!
-    @IBOutlet weak var appUser: UIButton!
-    @IBOutlet weak var logo: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,23 +28,24 @@ class AppDetailsViewController: UIViewController {
     
     func loadUI() {
         UIView.performWithoutAnimation {
-            view.isHidden = false
-            appName.text = app?.name
-            appDescription.text = app?.description
-            appUser.setTitle(app?.user, for: .normal)
-            appUser.layoutIfNeeded()
-            loadImage(fromURL: (app?.logo)!)
+            placeholder.isHidden = true
+            stackview.isHidden = false
+            name.text = project?.name
+            desc.text = project?.description
+            user.setTitle(project?.user, for: .normal)
+            user.layoutIfNeeded()
+            loadImage(fromURL: (project?.logo)!)
         }
     }
     
     @IBAction func openLink(_ sender: Any) {
         let application = UIApplication.shared
-        let webURL = URL(string: (app?.link)!)!
+        let webURL = URL(string: (project?.link)!)!
         application.open(webURL)
     }
     
     @IBAction func openInstagram(_ sender: Any) {
-        let username = app?.user
+        let username = project?.user
         let appURL = URL(string: "instagram://user?username=\(username ?? "")")!
         let application = UIApplication.shared
         
@@ -75,8 +78,10 @@ class AppDetailsViewController: UIViewController {
 
 }
 
-extension AppDetailsViewController: AppSelectionDelegate {
-    func appSelected(_ newApp: App) {
-        app = newApp
+extension ProjectDetailsViewController: ProjectSelectionDelegate {
+    
+    func projectSelected(_ newProject: Project) {
+        project = newProject
     }
+    
 }

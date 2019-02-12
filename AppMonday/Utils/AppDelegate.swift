@@ -14,18 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        // TabBarController
         let tabBarController = window?.rootViewController as! UITabBarController
-        let splitViewController = tabBarController.viewControllers?.first as! UISplitViewController
-        let leftNavController = splitViewController.viewControllers.first as! UINavigationController
-        let masterViewController = leftNavController.topViewController as! TableViewController
-        let rightNavController = splitViewController.viewControllers.last as! UINavigationController
-        let detailViewController = rightNavController.topViewController as! AppDetailsViewController
         
-        masterViewController.delegate = detailViewController
+        // Project tab
+        let projects_splitViewController = tabBarController.viewControllers?.first as! ProjectsSplitViewController
+        let projects_leftNavController = projects_splitViewController.viewControllers.first as! UINavigationController
+        let projects_masterViewController = projects_leftNavController.topViewController as! ProjectsTableViewController
+        let projects_rightNavController = projects_splitViewController.viewControllers.last as! UINavigationController
+        let projects_detailViewController = projects_rightNavController.topViewController as! ProjectDetailsViewController
+        projects_masterViewController.delegate = projects_detailViewController
         
+        // Competition tab
+        // TODO
+        
+        // Notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if granted {
                 print("Notifications permission granted.")
