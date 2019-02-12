@@ -29,6 +29,7 @@
 		6AAE956B22131C6300270BD5 /* CompetitionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE956A22131C6300270BD5 /* CompetitionsTableViewController.swift */; };
 		6AAE956D22131C8600270BD5 /* CompetitionsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE956C22131C8600270BD5 /* CompetitionsSplitViewController.swift */; };
 		6AAE956F22131CAE00270BD5 /* CompetitionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE956E22131CAE00270BD5 /* CompetitionDetailsViewController.swift */; };
+		6AAE957122133B2000270BD5 /* CompetitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE957022133B2000270BD5 /* CompetitionTableViewCell.swift */; };
 		6ABCAFED21C90BD1007AF8DA /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABCAFEC21C90BD1007AF8DA /* ProjectTableViewCell.swift */; };
 		6ABCAFF021C90C75007AF8DA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABCAFEF21C90C75007AF8DA /* Utils.swift */; };
 		6ABCAFF221C90EBC007AF8DA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABCAFF121C90EBC007AF8DA /* Project.swift */; };
@@ -60,6 +61,7 @@
 		6AAE956A22131C6300270BD5 /* CompetitionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionsTableViewController.swift; sourceTree = "<group>"; };
 		6AAE956C22131C8600270BD5 /* CompetitionsSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionsSplitViewController.swift; sourceTree = "<group>"; };
 		6AAE956E22131CAE00270BD5 /* CompetitionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionDetailsViewController.swift; sourceTree = "<group>"; };
+		6AAE957022133B2000270BD5 /* CompetitionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionTableViewCell.swift; sourceTree = "<group>"; };
 		6ABCAFEC21C90BD1007AF8DA /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		6ABCAFEF21C90C75007AF8DA /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6ABCAFF121C90EBC007AF8DA /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		6ABCAFEE21C90BE3007AF8DA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6AAE957022133B2000270BD5 /* CompetitionTableViewCell.swift */,
 				6ABCAFEC21C90BD1007AF8DA /* ProjectTableViewCell.swift */,
 				6AAE955622130D3F00270BD5 /* SettingsButtonTableViewCell.swift */,
 				6AAE955522130D3F00270BD5 /* SettingsLabelTableViewCell.swift */,
@@ -253,6 +256,7 @@
 				6AAE956B22131C6300270BD5 /* CompetitionsTableViewController.swift in Sources */,
 				6AAE95642213188100270BD5 /* CompetitionsManager.swift in Sources */,
 				6A8904B921C7E83700F08355 /* AppDelegate.swift in Sources */,
+				6AAE957122133B2000270BD5 /* CompetitionTableViewCell.swift in Sources */,
 				6AAE955922130D4000270BD5 /* SettingsButtonTableViewCell.swift in Sources */,
 				6AAE956D22131C8600270BD5 /* CompetitionsSplitViewController.swift in Sources */,
 				6A75248221EA53A600AFF4EC /* ProjectsSplitViewController.swift in Sources */,

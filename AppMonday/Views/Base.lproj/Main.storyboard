@@ -246,7 +246,7 @@
         <scene sceneID="wiA-pe-4Qm">
             <objects>
                 <splitViewController id="gE0-qv-lzW" customClass="ProjectsSplitViewController" customModule="AppMonday" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Projects" image="List" id="uKq-gR-1GV"/>
+                    <tabBarItem key="tabBarItem" title="Projects" image="Projects" id="uKq-gR-1GV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="FVw-pu-af7" kind="relationship" relationship="masterViewController" id="bdh-KB-Gyz"/>
@@ -566,6 +566,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="competitionCell" rowHeight="88" id="psr-WO-WrD" customClass="CompetitionTableViewCell" customModule="AppMonday" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="88"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="psr-WO-WrD" id="YFc-pj-AMH">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" tag="10" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZSC-gI-REU">
+                                            <rect key="frame" x="16" y="11" width="343" height="66"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmA-Pb-A06">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="30.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lma-ol-WZU">
+                                                    <rect key="frame" x="0.0" y="35.5" width="343" height="30.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4f-Vo-b8m">
+                                            <rect key="frame" x="359" y="0.0" width="16" height="87.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="16" id="Oet-l7-KQg"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Z4f-Vo-b8m" firstAttribute="top" secondItem="YFc-pj-AMH" secondAttribute="top" id="BwH-Ye-sZj"/>
+                                        <constraint firstAttribute="bottom" secondItem="Z4f-Vo-b8m" secondAttribute="bottom" id="FOG-1j-aIc"/>
+                                        <constraint firstItem="ZSC-gI-REU" firstAttribute="top" secondItem="YFc-pj-AMH" secondAttribute="topMargin" id="NhC-1c-iEj"/>
+                                        <constraint firstAttribute="trailing" secondItem="Z4f-Vo-b8m" secondAttribute="trailing" id="d8b-8M-Yul"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ZSC-gI-REU" secondAttribute="trailing" id="fcN-UZ-xGr"/>
+                                        <constraint firstItem="ZSC-gI-REU" firstAttribute="leading" secondItem="YFc-pj-AMH" secondAttribute="leadingMargin" id="rzi-Fy-ezk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ZSC-gI-REU" secondAttribute="bottom" id="sNL-cJ-w5f"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="date" destination="lma-ol-WZU" id="x6T-Le-90y"/>
+                                    <outlet property="name" destination="NmA-Pb-A06" id="ZUi-NA-ZPk"/>
+                                    <outlet property="status" destination="Z4f-Vo-b8m" id="cCi-Wr-WES"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="djK-fn-Rli" id="aSk-FC-Kpd"/>
                             <outlet property="delegate" destination="djK-fn-Rli" id="0RK-hX-KdK"/>
@@ -575,7 +625,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3J-2T-EOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2854" y="791"/>
+            <point key="canvasLocation" x="2853.5999999999999" y="790.25487256371821"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kQR-a0-j8K">
@@ -597,7 +647,7 @@
         <scene sceneID="u3J-Te-Okd">
             <objects>
                 <splitViewController id="Mrx-Hn-Z6v" customClass="CompetitionsSplitViewController" customModule="AppMonday" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Competitions" id="0dL-Hr-m1b"/>
+                    <tabBarItem key="tabBarItem" title="Competitions" image="Competitions" id="0dL-Hr-m1b"/>
                     <connections>
                         <segue destination="Vwv-iM-rOH" kind="relationship" relationship="masterViewController" id="d8T-9Q-f0J"/>
                         <segue destination="WzM-zs-DOj" kind="relationship" relationship="detailViewController" id="D1F-oh-uHC"/>
@@ -627,7 +677,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="List" width="25" height="25"/>
+        <image name="Competitions" width="25" height="22"/>
+        <image name="Projects" width="25" height="25"/>
         <image name="Settings" width="25" height="25"/>
     </resources>
 </document>

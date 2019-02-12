@@ -59,10 +59,11 @@ class CompetitionsTableViewController: AppMondayTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let competition = indexPath.section == 0 ? playing[indexPath.row] : indexPath.section == 1 ? coming[indexPath.row] : ended[indexPath.row]
         
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "competitionCell", for: indexPath) as! CompetitionTableViewCell
         
-        cell.textLabel?.text = competition.name
-        cell.detailTextLabel?.text = competition.description
+        cell.name.text = competition.name
+        cell.date.text = "\(competition.start ?? "Unknown") - \(competition.end ?? "Unknown")"
+        cell.status.backgroundColor = competition.playing! ? UIColor.green : competition.coming! ? UIColor.orange : UIColor.red
         
         return cell
     }
