@@ -265,17 +265,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading timer..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JYr-OM-ldr">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.1764705882352941" green="0.53725490196078429" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="projectCell" rowHeight="92" id="kTL-zs-7bn" customClass="ProjectTableViewCell" customModule="AppMonday" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="92"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kTL-zs-7bn" id="Meq-hL-8ZD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
@@ -360,9 +352,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="label" destination="JYr-OM-ldr" id="FcC-xc-kGY"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esY-Li-0uL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -380,7 +369,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="gE0-qv-lzW" kind="relationship" relationship="viewControllers" id="dT6-7i-mPS"/>
-                        <segue destination="JFo-TL-Dhl" kind="relationship" relationship="viewControllers" id="0tN-Wb-yAl"/>
+                        <segue destination="Mrx-Hn-Z6v" kind="relationship" relationship="viewControllers" id="txI-nH-Rx3"/>
+                        <segue destination="JFo-TL-Dhl" kind="relationship" relationship="viewControllers" id="imN-nB-thG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="leu-7l-IzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -551,6 +541,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tpv-ng-NCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1097" y="1567"/>
+        </scene>
+        <!--Competition Details View Controller-->
+        <scene sceneID="tFr-SN-DVB">
+            <objects>
+                <viewController id="kBe-H0-eNC" customClass="CompetitionDetailsViewController" customModule="AppMonday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="27q-Ui-83Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wsp-7S-q51"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6dO-4J-MLa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHQ-HY-5OU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2854" y="1567"/>
+        </scene>
+        <!--Competitions-->
+        <scene sceneID="AY4-Zn-iwB">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="djK-fn-Rli" customClass="CompetitionsTableViewController" customModule="AppMonday" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="asS-tW-O0d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="djK-fn-Rli" id="aSk-FC-Kpd"/>
+                            <outlet property="delegate" destination="djK-fn-Rli" id="0RK-hX-KdK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Competitions" id="pdT-Mq-Ptq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3J-2T-EOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2854" y="791"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kQR-a0-j8K">
+            <objects>
+                <navigationController id="Vwv-iM-rOH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sjL-iV-mWI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="djK-fn-Rli" kind="relationship" relationship="rootViewController" id="cKa-cc-E9c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="srH-IT-0C3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1977" y="791"/>
+        </scene>
+        <!--Competitions-->
+        <scene sceneID="u3J-Te-Okd">
+            <objects>
+                <splitViewController id="Mrx-Hn-Z6v" customClass="CompetitionsSplitViewController" customModule="AppMonday" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Competitions" id="0dL-Hr-m1b"/>
+                    <connections>
+                        <segue destination="Vwv-iM-rOH" kind="relationship" relationship="masterViewController" id="d8T-9Q-f0J"/>
+                        <segue destination="WzM-zs-DOj" kind="relationship" relationship="detailViewController" id="D1F-oh-uHC"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="63L-KA-x94" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1097" y="791"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yO8-8L-gVI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WzM-zs-DOj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kY6-dB-zDx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kBe-H0-eNC" kind="relationship" relationship="rootViewController" id="Q5d-sP-9ZV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iFE-SL-2xn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1976.8" y="1566.5667166416792"/>
         </scene>
     </scenes>
     <resources>

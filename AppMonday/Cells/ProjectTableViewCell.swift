@@ -29,10 +29,7 @@ class ProjectTableViewCell: UITableViewCell {
     func loadImage(fromURL imageUrl: String) {
         logo.clipsToBounds = true
         logo.layer.cornerRadius = 13
-        
-        Utils.loadImage(url: imageUrl) { (_ image: UIImage) in
-            self.logo.image = image
-        }
+        logo.loadImage(url: imageUrl)
     }
 
 }

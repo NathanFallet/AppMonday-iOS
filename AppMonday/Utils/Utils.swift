@@ -71,49 +71,4 @@ class Utils {
         }]
     }
     
-    static func displayAlert(_ text: String, _ view: UIViewController) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Information", message: text, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            view.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    static func parseDate(input: String) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        if let date = formatter.date(from: input) {
-            let formatter2 = DateFormatter()
-            formatter2.dateStyle = .medium
-            formatter2.timeStyle = .none
-            return formatter2.string(from: date)
-        }
-        return input
-    }
-    
-    static func loadImage(url: String, _ callback: @escaping (_ image: UIImage) -> Void) {
-        let imageUrl = URL(string: url)!
-        
-        if let imageFromCache = cache.object(forKey: imageUrl.absoluteString as NSString) as? UIImage {
-            callback(imageFromCache)
-        }
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            guard let imageData:NSData = NSData(contentsOf: imageUrl) else {
-                DispatchQueue.main.async {
-                    let image = UIImage(named: "NoLogo")!
-                    cache.setObject(image, forKey: imageUrl.absoluteString as NSString)
-                    callback(image)
-                }
-                return
-            }
-            DispatchQueue.main.async {
-                let image = UIImage(data: imageData as Data)!
-                cache.setObject(image, forKey: imageUrl.absoluteString as NSString)
-                callback(image)
-            }
-        }
-    }
-    
 }

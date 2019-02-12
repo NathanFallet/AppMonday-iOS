@@ -22,17 +22,33 @@ class SettingsTableViewController: AppMondayTableViewController {
         sections = []
 
         sections += [SettingsSection(name: "What is AppMonday?", elements: [
-            SettingsElementButton(id: "moreInfo", text: "Check our website for more") { () in
+            SettingsElementButton(id: "moreInfo", text: "Check out our website for more!") { () in
                 UIApplication.shared.open(URL(string: "https://www.appmonday.xyz/")!)
             }
         ])]
         
         sections += [SettingsSection(name: "Instragram accounts", elements: [
             SettingsElementButton(id: "instagram_", text: "@nathanfallet") { () in
-                UIApplication.shared.open(URL(string: "instagram://user?username=nathanfallet")!)
+                let appURL = URL(string: "instagram://user?username=nathanfallet")!
+                let application = UIApplication.shared
+                
+                if application.canOpenURL(appURL) {
+                    application.open(appURL)
+                } else {
+                    let webURL = URL(string: "https://instagram.com/nathanfallet")!
+                    application.open(webURL)
+                }
             },
             SettingsElementButton(id: "instagram_", text: "@code.community") { () in
-                UIApplication.shared.open(URL(string: "instagram://user?username=code.community")!)
+                let appURL = URL(string: "instagram://user?username=code.community")!
+                let application = UIApplication.shared
+                
+                if application.canOpenURL(appURL) {
+                    application.open(appURL)
+                } else {
+                    let webURL = URL(string: "https://instagram.com/code.community")!
+                    application.open(webURL)
+                }
             }
         ])]
         

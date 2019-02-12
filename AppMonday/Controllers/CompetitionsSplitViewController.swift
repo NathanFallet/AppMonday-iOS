@@ -1,14 +1,14 @@
 //
-//  SplitViewController.swift
+//  CompetitionsSplitViewController.swift
 //  AppMonday
 //
-//  Created by Nathan FALLET on 12/01/2019.
+//  Created by Nathan FALLET on 12/02/2019.
 //  Copyright © 2019 Nathan FALLET. All rights reserved.
 //
 
 import UIKit
 
-class ProjectsSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
+class CompetitionsSplitViewController: UISplitViewController, UISplitViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

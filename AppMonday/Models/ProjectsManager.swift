@@ -37,5 +37,29 @@ class ProjectsManager {
             }
         }.resume()
     }
+    
+    // Submit a project
+    func submit(access_token: String, name: String, description: String, user: String, link: String, logo: String, callback: @escaping () -> ()) {
+        var request = URLRequest(url: URL(string: "https://api.appmonday.xyz/project/projectt.php")!)
+        request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
+        request.httpMethod = "POST"
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: ["name": name, "description": description, "user": user, "link": link, "logo": logo], options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            DispatchQueue.main.async {
+                callback()
+            }
+        }.resume()
+    }
 
 }

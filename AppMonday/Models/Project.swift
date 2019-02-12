@@ -10,6 +10,7 @@ import Foundation
 
 class Project: Codable {
     
+    var id: Int?
     var name: String?
     var description: String?
     var user: String?
@@ -19,7 +20,7 @@ class Project: Codable {
     
     func process() {
         user = user != nil ? user!.hasPrefix("@") ? String(user!.dropFirst()) : user : ""
-        publish = publish != nil ? Utils.parseDate(input: publish!) : ""
+        publish = publish != nil ? publish?.parseDate() : ""
         logo = logo == nil || logo!.isEmpty ? "NoLogo" : logo
     }
     

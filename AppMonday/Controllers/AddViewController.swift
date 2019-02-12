@@ -23,7 +23,7 @@ class AddViewController: UIViewController {
 
     @IBAction func send(_ sender: Any) {
         if appName.text!.isEmpty || appDescription.text!.isEmpty || appUser.text!.isEmpty || appLink.text!.isEmpty {
-            Utils.displayAlert(NSLocalizedString("error_all_fields_required", value: "All fields are required!", comment: "All fields are required!"), self)
+            displayAlert(NSLocalizedString("error_all_fields_required", value: "All fields are required!", comment: "All fields are required!"))
             return
         }
         
@@ -39,21 +39,29 @@ class AddViewController: UIViewController {
                 
                 if let parseJSON = json {
                     if parseJSON["error"] == nil {
-                        Utils.displayAlert(NSLocalizedString("success", value: "Your app has been submitted! Follow us on Instragram to see it in our story.", comment: "Main error"), self)
+                        self.displayAlert(NSLocalizedString("success", value: "Your app has been submitted! Follow us on Instragram to see it in our story.", comment: "Main error"))
                     } else if parseJSON["error"] as! String == "error_all_fields_required" {
-                        Utils.displayAlert(NSLocalizedString("error_all_fields_required", value: "All fields are required!", comment: "Please fill all inputs with correct values!"), self)
+                        self.displayAlert(NSLocalizedString("error_all_fields_required", value: "All fields are required!", comment: "Please fill all inputs with correct values!"))
                     } else if parseJSON["error"] as! String == "error_name_or_link_already_taken" {
-                        Utils.displayAlert(NSLocalizedString("error_name_or_link_already_taken", value: "An app with this name or this link was already submitted!", comment: "All fields are required!"), self)
+                        self.displayAlert(NSLocalizedString("error_name_or_link_already_taken", value: "An app with this name or this link was already submitted!", comment: "All fields are required!"))
                     } else {
-                        Utils.displayAlert(NSLocalizedString("error", value: "We are sorry but something went wrong...", comment: "Main error"), self)
+                        self.displayAlert(NSLocalizedString("error", value: "We are sorry but something went wrong...", comment: "Main error"))
                     }
                 } else {
-                    Utils.displayAlert(NSLocalizedString("error", value: "We are sorry but something went wrong...", comment: "Main error"), self)
+                    self.displayAlert(NSLocalizedString("error", value: "We are sorry but something went wrong...", comment: "Main error"))
                 }
             } catch {
                 print(String(describing: error))
-                Utils.displayAlert(NSLocalizedString("error", value: "We are sorry but something went wrong...", comment: "Main error"), self)
+                self.displayAlert(NSLocalizedString("error", value: "We are sorry but something went wrong...", comment: "Main error"))
             }
+        }
+    }
+    
+    func displayAlert(_ text: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Information", message: text, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
