@@ -10,19 +10,28 @@ import UIKit
 
 class CompetitionDetailsViewController: UIViewController {
     
+    @IBOutlet weak var stackview: UIStackView!
+    @IBOutlet weak var placeholder: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var criterias: UILabel!
     var competition: Competition? {
         didSet {
             UIView.performWithoutAnimation {
                 loadViewIfNeeded()
-                // Init here
+                placeholder.isHidden = true
+                stackview.isHidden = false
+                name.text = competition?.name
+                date.text = "\(competition?.start ?? "Unknown") - \(competition?.end ?? "Unknown")"
+                desc.text = competition?.description
+                criterias.text = competition?.criterias
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
 
 }
