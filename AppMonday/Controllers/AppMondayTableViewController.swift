@@ -14,6 +14,15 @@ class AppMondayTableViewController: UITableViewController {
     let spinner = UIActivityIndicatorView()
     let loadingLabel = UILabel()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
+        if let selectedRow = selectedRow {
+            tableView.deselectRow(at: selectedRow, animated: true)
+        }
+    }
+    
     func loadContent() {}
     
     @objc func reloadContent(_ sender: Any){

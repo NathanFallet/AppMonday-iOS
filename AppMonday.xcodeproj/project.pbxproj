@@ -34,6 +34,12 @@
 		6ABCAFF021C90C75007AF8DA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABCAFEF21C90C75007AF8DA /* Utils.swift */; };
 		6ABCAFF221C90EBC007AF8DA /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABCAFF121C90EBC007AF8DA /* Project.swift */; };
 		6ABCAFF421C90F6F007AF8DA /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABCAFF321C90F6F007AF8DA /* ProjectDetailsViewController.swift */; };
+		6AE42CEB2214277500DC8693 /* TipsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE42CE82214277500DC8693 /* TipsTableViewController.swift */; };
+		6AE42CEC2214277500DC8693 /* TipDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE42CE92214277500DC8693 /* TipDetailsViewController.swift */; };
+		6AE42CED2214277500DC8693 /* TipsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE42CEA2214277500DC8693 /* TipsSplitViewController.swift */; };
+		6AE42CEF2214288B00DC8693 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE42CEE2214288B00DC8693 /* Tip.swift */; };
+		6AE42CF12214289500DC8693 /* TipsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE42CF02214289500DC8693 /* TipsManager.swift */; };
+		6AE42CF32214299500DC8693 /* TipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE42CF22214299500DC8693 /* TipTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +72,12 @@
 		6ABCAFEF21C90C75007AF8DA /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6ABCAFF121C90EBC007AF8DA /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		6ABCAFF321C90F6F007AF8DA /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
+		6AE42CE82214277500DC8693 /* TipsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsTableViewController.swift; sourceTree = "<group>"; };
+		6AE42CE92214277500DC8693 /* TipDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipDetailsViewController.swift; sourceTree = "<group>"; };
+		6AE42CEA2214277500DC8693 /* TipsSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsSplitViewController.swift; sourceTree = "<group>"; };
+		6AE42CEE2214288B00DC8693 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		6AE42CF02214289500DC8693 /* TipsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsManager.swift; sourceTree = "<group>"; };
+		6AE42CF22214299500DC8693 /* TipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,8 @@
 				6A049F0C2212D78300625E10 /* ProjectsManager.swift */,
 				6AAE95612213187500270BD5 /* Competition.swift */,
 				6AAE95632213188100270BD5 /* CompetitionsManager.swift */,
+				6AE42CEE2214288B00DC8693 /* Tip.swift */,
+				6AE42CF02214289500DC8693 /* TipsManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,6 +174,9 @@
 				6A75248121EA53A600AFF4EC /* ProjectsSplitViewController.swift */,
 				6A111C1A21C844C100E363E8 /* ProjectsTableViewController.swift */,
 				6ABCAFF321C90F6F007AF8DA /* ProjectDetailsViewController.swift */,
+				6AE42CEA2214277500DC8693 /* TipsSplitViewController.swift */,
+				6AE42CE82214277500DC8693 /* TipsTableViewController.swift */,
+				6AE42CE92214277500DC8693 /* TipDetailsViewController.swift */,
 				6AAE955322130CAE00270BD5 /* SettingsTableViewController.swift */,
 				6A8904BA21C7E83700F08355 /* AddViewController.swift */,
 			);
@@ -171,6 +188,7 @@
 			children = (
 				6AAE957022133B2000270BD5 /* CompetitionTableViewCell.swift */,
 				6ABCAFEC21C90BD1007AF8DA /* ProjectTableViewCell.swift */,
+				6AE42CF22214299500DC8693 /* TipTableViewCell.swift */,
 				6AAE955622130D3F00270BD5 /* SettingsButtonTableViewCell.swift */,
 				6AAE955522130D3F00270BD5 /* SettingsLabelTableViewCell.swift */,
 				6AAE955722130D4000270BD5 /* SettingsSwitchTableViewCell.swift */,
@@ -254,7 +272,9 @@
 				6ABCAFED21C90BD1007AF8DA /* ProjectTableViewCell.swift in Sources */,
 				6AAE95622213187500270BD5 /* Competition.swift in Sources */,
 				6AAE956B22131C6300270BD5 /* CompetitionsTableViewController.swift in Sources */,
+				6AE42CEB2214277500DC8693 /* TipsTableViewController.swift in Sources */,
 				6AAE95642213188100270BD5 /* CompetitionsManager.swift in Sources */,
+				6AE42CF32214299500DC8693 /* TipTableViewCell.swift in Sources */,
 				6A8904B921C7E83700F08355 /* AppDelegate.swift in Sources */,
 				6AAE957122133B2000270BD5 /* CompetitionTableViewCell.swift in Sources */,
 				6AAE955922130D4000270BD5 /* SettingsButtonTableViewCell.swift in Sources */,
@@ -265,13 +285,17 @@
 				6ABCAFF221C90EBC007AF8DA /* Project.swift in Sources */,
 				6A049F0D2212D78300625E10 /* ProjectsManager.swift in Sources */,
 				6AAE955E22130D4D00270BD5 /* SettingsSection.swift in Sources */,
+				6AE42CF12214289500DC8693 /* TipsManager.swift in Sources */,
+				6AE42CEF2214288B00DC8693 /* Tip.swift in Sources */,
 				6AAE9569221319BA00270BD5 /* StringExtension.swift in Sources */,
 				6A049F102212F24800625E10 /* AppMondayTableViewController.swift in Sources */,
 				6AAE95672213198B00270BD5 /* UIImageExtension.swift in Sources */,
 				6AAE955822130D4000270BD5 /* SettingsLabelTableViewCell.swift in Sources */,
 				6AAE955A22130D4000270BD5 /* SettingsSwitchTableViewCell.swift in Sources */,
 				6AAE955D22130D4D00270BD5 /* SettingsElement.swift in Sources */,
+				6AE42CEC2214277500DC8693 /* TipDetailsViewController.swift in Sources */,
 				6ABCAFF021C90C75007AF8DA /* Utils.swift in Sources */,
+				6AE42CED2214277500DC8693 /* TipsSplitViewController.swift in Sources */,
 				6ABCAFF421C90F6F007AF8DA /* ProjectDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

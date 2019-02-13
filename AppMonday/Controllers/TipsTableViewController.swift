@@ -1,17 +1,17 @@
 //
-//  TableViewController.swift
+//  TipsTableViewController.swift
 //  AppMonday
 //
-//  Created by Nathan FALLET on 17/12/2018.
-//  Copyright © 2018 Nathan FALLET. All rights reserved.
+//  Created by Nathan FALLET on 12/02/2019.
+//  Copyright © 2019 Nathan FALLET. All rights reserved.
 //
 
 import UIKit
 
-class ProjectsTableViewController: AppMondayTableViewController {
-
-    weak var delegate: ProjectSelectionDelegate?
-    var projects = [Project]()
+class TipsTableViewController: AppMondayTableViewController {
+    
+    weak var delegate: TipSelectionDelegate?
+    var tips = [Tip]()
     var hasMore = true
     var loading = false {
         didSet {
@@ -31,8 +31,8 @@ class ProjectsTableViewController: AppMondayTableViewController {
     
     override func loadContent() {
         loading = true
-        ProjectsManager().getList(start: 0, limit: 10) { (projects) in
-            self.projects = projects
+        TipsManager().getList(start: 0, limit: 10) { (tips) in
+            self.tips = tips
             self.loading = false
             self.hasMore = true
             self.tableView.reloadData()
@@ -41,11 +41,11 @@ class ProjectsTableViewController: AppMondayTableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return projects.count > 0 ? 2 : 0
+        return tips.count > 0 ? 2 : 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0 ? (projects.count > 0 ? 1 : 0) : (projects.count > 0 ? projects.count - 1 : 0))
+        return (section == 0 ? (tips.count > 0 ? 1 : 0) : (tips.count > 0 ? tips.count - 1 : 0))
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -53,35 +53,33 @@ class ProjectsTableViewController: AppMondayTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let project = projects[indexPath.section + indexPath.row]
+        let tip = tips[indexPath.section + indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell", for: indexPath) as! ProjectTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tipCell", for: indexPath) as! TipTableViewCell
         
-        cell.name.text = project.name!
-        cell.user.text = "Submitted by \(project.user!)"
-        cell.date.text = project.publish!
-        cell.loadImage(fromURL: project.logo!)
+        cell.name.text = tip.name!
+        cell.date.text = tip.publish!
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedProject = projects[indexPath.section + indexPath.row]
-        delegate?.projectSelected(selectedProject)
+        let selectedTip = tips[indexPath.section + indexPath.row]
+        delegate?.tipSelected(selectedTip)
         
-        if let detailViewController = delegate as? ProjectDetailsViewController, let detailNavigationController = detailViewController.navigationController {
+        if let detailViewController = delegate as? TipDetailsViewController, let detailNavigationController = detailViewController.navigationController {
             splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastElement = projects.count - 2
+        let lastElement = tips.count - 2
         if !loading && hasMore && indexPath.section == 1 && indexPath.row == lastElement {
             loading = true
-            ProjectsManager().getList(start: projects.count, limit: 10) { (projects) in
+            TipsManager().getList(start: tips.count, limit: 10) { (tips) in
                 self.loading = false
-                if projects.count > 0 {
-                    self.projects += projects
+                if tips.count > 0 {
+                    self.tips += tips
                     self.hasMore = true
                     self.tableView.reloadData()
                 } else {
@@ -93,8 +91,8 @@ class ProjectsTableViewController: AppMondayTableViewController {
 
 }
 
-protocol ProjectSelectionDelegate: class {
+protocol TipSelectionDelegate: class {
     
-    func projectSelected(_ newProject: Project)
+    func tipSelected(_ newTip: Tip)
     
 }

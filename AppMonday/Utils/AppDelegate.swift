@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // TabBarController
         let tabBarController = window?.rootViewController as! UITabBarController
         
-        // Project tab
+        // Projects tab
         let projects_splitViewController = tabBarController.viewControllers?[0] as! ProjectsSplitViewController
         let projects_leftNavController = projects_splitViewController.viewControllers.first as! UINavigationController
         let projects_masterViewController = projects_leftNavController.topViewController as! ProjectsTableViewController
@@ -26,13 +26,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let projects_detailViewController = projects_rightNavController.topViewController as! ProjectDetailsViewController
         projects_masterViewController.delegate = projects_detailViewController
         
-        // Competition tab
+        // Competitions tab
         let competitions_splitViewController = tabBarController.viewControllers?[1] as! CompetitionsSplitViewController
         let competitions_leftNavController = competitions_splitViewController.viewControllers.first as! UINavigationController
         let competitions_masterViewController = competitions_leftNavController.topViewController as! CompetitionsTableViewController
         let competitions_rightNavController = competitions_splitViewController.viewControllers.last as! UINavigationController
         let competitions_detailViewController = competitions_rightNavController.topViewController as! CompetitionDetailsViewController
         competitions_masterViewController.delegate = competitions_detailViewController
+        
+        // Tips tab
+        let tips_splitViewController = tabBarController.viewControllers?[2] as! TipsSplitViewController
+        let tips_leftNavController = tips_splitViewController.viewControllers.first as! UINavigationController
+        let tips_masterViewController = tips_leftNavController.topViewController as! TipsTableViewController
+        let tips_rightNavController = tips_splitViewController.viewControllers.last as! UINavigationController
+        let tips_detailViewController = tips_rightNavController.topViewController as! TipDetailsViewController
+        tips_masterViewController.delegate = tips_detailViewController
         
         // Notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
