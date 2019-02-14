@@ -28,7 +28,7 @@ class SettingsTableViewController: AppMondayTableViewController {
         ])]
         
         sections += [SettingsSection(name: "Instragram accounts", elements: [
-            SettingsElementButton(id: "instagram_", text: "@nathanfallet") { () in
+            SettingsElementButton(id: "instagram_nathanfallet", text: "@nathanfallet") { () in
                 let appURL = URL(string: "instagram://user?username=nathanfallet")!
                 let application = UIApplication.shared
                 
@@ -39,7 +39,7 @@ class SettingsTableViewController: AppMondayTableViewController {
                     application.open(webURL)
                 }
             },
-            SettingsElementButton(id: "instagram_", text: "@code.community") { () in
+            SettingsElementButton(id: "instagram_code.community", text: "@code.community") { () in
                 let appURL = URL(string: "instagram://user?username=code.community")!
                 let application = UIApplication.shared
                 
