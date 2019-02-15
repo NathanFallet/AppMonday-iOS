@@ -14,6 +14,7 @@ class ProjectsManager {
     func getList(start: Int, limit: Int, callback: @escaping ([Project]) -> ()) {
         var request = URLRequest(url: URL(string: "https://api.appmonday.xyz/project/project.php?start=\(start)&limit=\(limit)")!)
         request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
+        request.setValue("AppMonday_iOS", forHTTPHeaderField: "client")
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
@@ -42,6 +43,7 @@ class ProjectsManager {
     func submit(access_token: String, name: String, description: String, user: String, link: String, logo: String, callback: @escaping () -> ()) {
         var request = URLRequest(url: URL(string: "https://api.appmonday.xyz/project/projectt.php")!)
         request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
+        request.setValue("AppMonday_iOS", forHTTPHeaderField: "client")
         request.httpMethod = "POST"
         
         do {

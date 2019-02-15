@@ -13,6 +13,8 @@ class AppMondayTableViewController: UITableViewController {
     let loadingView = UIView()
     let spinner = UIActivityIndicatorView()
     let loadingLabel = UILabel()
+    let nothingView = UIView()
+    let nothingLabel = UILabel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,6 +60,23 @@ class AppMondayTableViewController: UITableViewController {
         spinner.isHidden = true
         loadingLabel.isHidden = true
         tableView.separatorStyle = .singleLine
+    }
+    
+    func setNothingScreen() {
+        let width: CGFloat = 300
+        let height: CGFloat = 30
+        let x = (tableView.frame.width / 2) - (width / 2)
+        let y = (tableView.frame.height / 2) - (height / 2) - (navigationController?.navigationBar.frame.height)!
+        nothingView.frame = CGRect(x: x, y: y, width: width, height: height)
+        
+        nothingLabel.textAlignment = .center
+        nothingLabel.text = "This content is temporarily unavailable"
+        nothingLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 30)
+        
+        nothingView.addSubview(nothingLabel)
+        
+        tableView.addSubview(nothingView)
+        tableView.separatorStyle = .none
     }
 
 }

@@ -34,13 +34,18 @@ class CompetitionsTableViewController: AppMondayTableViewController {
     override func loadContent() {
         loading = true
         CompetitionsManager().getList(start: 0, limit: 10) { (playing, coming, ended) in
-            self.playing = playing
-            self.coming = coming
-            self.ended = ended
             self.loading = false
-            self.hasMore = true
-            self.tableView.reloadData()
             self.removeLoadingScreen()
+            if playing.count > 0 || coming.count > 0 || ended.count > 0 {
+                self.playing = playing
+                self.coming = coming
+                self.ended = ended
+                self.hasMore = true
+                self.tableView.reloadData()
+            } else {
+                self.hasMore = false
+                self.setNothingScreen()
+            }
         }
     }
     

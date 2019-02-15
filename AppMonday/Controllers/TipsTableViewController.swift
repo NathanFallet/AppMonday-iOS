@@ -32,11 +32,16 @@ class TipsTableViewController: AppMondayTableViewController {
     override func loadContent() {
         loading = true
         TipsManager().getList(start: 0, limit: 10) { (tips) in
-            self.tips = tips
             self.loading = false
-            self.hasMore = true
-            self.tableView.reloadData()
             self.removeLoadingScreen()
+            if tips.count > 0 {
+                self.tips = tips
+                self.hasMore = true
+                self.tableView.reloadData()
+            } else {
+                self.hasMore = false
+                self.setNothingScreen()
+            }
         }
     }
     

@@ -32,11 +32,16 @@ class ProjectsTableViewController: AppMondayTableViewController {
     override func loadContent() {
         loading = true
         ProjectsManager().getList(start: 0, limit: 10) { (projects) in
-            self.projects = projects
             self.loading = false
-            self.hasMore = true
-            self.tableView.reloadData()
             self.removeLoadingScreen()
+            if projects.count > 0 {
+                self.projects = projects
+                self.hasMore = true
+                self.tableView.reloadData()
+            } else {
+                self.hasMore = false
+                self.setNothingScreen()
+            }
         }
     }
     
